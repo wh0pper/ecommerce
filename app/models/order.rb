@@ -15,5 +15,5 @@ class Order < ApplicationRecord
 
   def update_total
     self.total_price = self.line_items.collect { |item| item.product.price * item.quantity }.sum
-  end 
+  end
 end

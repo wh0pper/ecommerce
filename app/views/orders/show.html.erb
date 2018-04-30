@@ -25,6 +25,15 @@
 
         </tr>
       <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Order total:</td>
+        <td><%= number_to_currency current_order.total_price %></td>
+        <td></td>
+      </tr>
+
     <% end %>
+
   </tbody>
 </table>
