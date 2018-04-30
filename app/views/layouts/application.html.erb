@@ -17,6 +17,7 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if current_user %>
               <li><a href="#"><%= current_user.email %></a></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "Your Cart", order_path %></a></li>
             <% else %>
               <li><%= link_to "Sign In", new_user_session_path %></li>
