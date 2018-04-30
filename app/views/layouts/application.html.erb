@@ -12,17 +12,23 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#">Sign In</a></li>
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Your Cart</a></li>
-        </ul>
+        <div class="container">
+          <a href="/" class="brand-logo">Logo</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if current_user %>
+              <li><a href="#"><%= current_user.email %></a></li>
+              <li><a href="#">Your Cart</a></li>
+            <% else %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <!-- <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p> -->
       <%= yield %>
     </div>
   </body>
