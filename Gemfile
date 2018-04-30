@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'devise'
+gem 'materialize-sass', '~> 1.0.0.beta'
 # gem 'paperclip', '~> 6.0.0'
 gem 'factory_bot_rails'
 
