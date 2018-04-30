@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :products
   resources :line_items
   root to: "products#index"
-  resource :order, only: [:show]
+  resource :order, only: [:show, :update]
 
 end
