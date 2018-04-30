@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Your cart:</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Remove item</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_items.each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= number_to_currency item.product.price %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency item.product.price * item.quantity %></td>
+        <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
