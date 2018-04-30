@@ -19,6 +19,9 @@ class LineItemsController < ApplicationController
   private
 
   def item_params
+    if params[:line_item][:quantity] == ''
+      params[:line_item][:quantity] = '1'
+    end
     params.require(:line_item).permit(:quantity, :product_id)
   end
 end
