@@ -3,7 +3,11 @@ class LineItemsController < ApplicationController
   def create
     @order = current_order
     @item = @order.line_items.new(item_params)
-    @order.save
+    if @order.save!
+      flash[:notice] = "Item added to cart!"
+    else
+      flash[:alert] = "Error adding item..."
+    end
     session[:order_id] = @order.id
     redirect_to products_path
   end
