@@ -3,11 +3,25 @@
 
 <% if @orders.any? %>
 <h4>Your past orders:</h4>
-<ul>
+<table>
+  <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Placed on</th>
+      <th>Item quantity</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
   <% @orders.each do |order| %>
-    <li><%= order.id %></li>
+  <tr>
+    <td><%= link_to order.id, order_path(order) %></td>
+    <td><%= order.placed_on %></td>
+    <td>quantity will go here</td>
+    <td><%= order.total_price %></td>
+  </tr>
   <% end %>
-</ul>
+
+</table>
 <% else %>
 <h4>You haven't placed any orders yet! <%= link_to "Start shopping", products_path %></h4>
 <% end %>

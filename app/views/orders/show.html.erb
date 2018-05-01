@@ -3,7 +3,7 @@
 <h1>Your cart:</h1>
 
 <table>
-  <% if @order_items.any? %>
+  <% if @order.line_items.any? %>
   <thead>
     <tr>
       <th>Name</th>
@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-      <% @order_items.each do |item| %>
+      <% @order.line_items.each do |item| %>
         <tr>
           <td><%= item.product.name %></td>
           <td><%= number_to_currency item.product.price %></td>
@@ -37,7 +37,9 @@
 </table>
 
 <br>
-<%= button_to "Place Order", {action: "update"}, method: :patch, class: "waves-effect waves-light btn" %>
+  <% if @order.status == "In progress" %>
+    <%= button_to "Place Order", {action: "update"}, method: :patch, class: "waves-effect waves-light btn" %>
+  <% end %>
 <% else %>
   <h4>No products added.</h4>
 <% end %>
