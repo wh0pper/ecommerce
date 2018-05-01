@@ -2,7 +2,12 @@ class LineItemsController < ApplicationController
 
   def create
     @order = current_order
-    @item = @order.line_items.new(item_params)
+    existing_item = @order.line_items.where(product_id: item_params[:product_id]).first
+    if existing_item
+      existing_item.increment!(:quantity, item_params[:quantity].to_i)
+    else
+      @order.line_items.create(item_params)
+    end
     if @order.save!
       flash[:notice] = "Item added to cart!"
     else

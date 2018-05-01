@@ -18,5 +18,10 @@ class ApplicationController < ActionController::Base
     account = Account.where(user_id: user.id).first
     session[:account_id] = account.id
     account.orders << current_order
+    if session[:current_url].present?
+      session[:current_url]
+    else
+      root_path
+    end
   end
 end
