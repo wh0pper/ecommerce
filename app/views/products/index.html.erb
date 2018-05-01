@@ -25,7 +25,7 @@
         <td>
           <%= form_for @line_item do |f| %>
             <%= f.hidden_field :product_id, value: product.id %>
-            <%= f.number_field :quantity, class: "add-quantity" %>
+            <%= f.number_field :quantity, class: "add-quantity", min: 0, max: 10  %>
             <%= f.submit '+', class: 'btn-floating waves-effect waves-light' %>
           <% end %>
         </td>
