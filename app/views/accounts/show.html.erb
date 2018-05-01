@@ -8,4 +8,6 @@
     <li><%= order.id %></li>
   <% end %>
 </ul>
+<% else %>
+<h4>You haven't placed any orders yet! <%= link_to "Start shopping", products_path %></h4>
 <% end %>
