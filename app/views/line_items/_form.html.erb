@@ -1,0 +1,5 @@
+<%= line_item.product_id %>
+<%= form_with do |f| %>
+  <%= f.number_field item.quantity %>
+  <%= f.submit "Update" %>
+<% end %>

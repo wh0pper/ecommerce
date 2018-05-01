@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
+<%  %>
 <h1>Your cart:</h1>
 
 <table>
@@ -20,7 +20,15 @@
         <tr>
           <td><%= item.product.name %></td>
           <td><%= number_to_currency item.product.price %></td>
-          <td><%= item.quantity %></td>
+          <td>
+            <span id="<%= item.id %>"><%= item.quantity %></span>
+            <div id="<%= item.id %>" class="edit-quantity">
+              <%= form_for item, remote: true do |f| %>
+                <%= f.number_field :quantity %>
+                <%= f.submit "Change" %>
+              <% end %>
+            </div>
+          </td>
           <td><%= number_to_currency item.product.price * item.quantity %></td>
           <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 

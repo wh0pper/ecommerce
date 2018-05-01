@@ -17,6 +17,15 @@ class LineItemsController < ApplicationController
     redirect_to products_path
   end
 
+  def update
+    @line_item = LineItem.find(params[:id])
+    @line_item.update(quantity: params[:line_item][:quantity].to_i)
+    respond_to do |format|
+      format.html { redirect_to order_path(current_order) }
+      format.js
+    end
+  end
+
   def destroy
     @order = current_order
     @item = @order.line_items.find(params[:id])
