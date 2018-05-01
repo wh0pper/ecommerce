@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   has_many :products, through: :line_items
-  belongs_to :account 
+  belongs_to :account, optional: true
 
   before_save :update_total
   before_create :update_status

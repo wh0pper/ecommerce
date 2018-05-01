@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
     if session[:order_id]
       Order.find(session[:order_id])
     else
-      Account.find(current_user.id).orders.new
+      if current_user
+        Account.find(current_user.id).orders.new
+      else
+        Order.new
+      end   
     end
   end
 end
