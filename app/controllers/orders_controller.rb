@@ -6,9 +6,11 @@ class OrdersController < ApplicationController
 
   def update
     current_order.status = "Placed"
+    current_order.placed_on = Date.today
     flash[:notice] = "Order successfully placed."
     new_order = Order.new
     session[:order_id] = new_order.id
+    binding.pry
     redirect_to products_path
   end
 end
