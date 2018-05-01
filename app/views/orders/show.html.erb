@@ -3,6 +3,7 @@
 <h1>Your cart:</h1>
 
 <table>
+  <% if @order_items.any? %>
   <thead>
     <tr>
       <th>Name</th>
@@ -14,7 +15,6 @@
   </thead>
 
   <tbody>
-    <% if @order_items.any? %>
       <% @order_items.each do |item| %>
         <tr>
           <td><%= item.product.name %></td>
@@ -33,9 +33,11 @@
         <td></td>
       </tr>
 
-    <% end %>
-
   </tbody>
 </table>
 
-<%= button_to "Place Order", {action: "update"}, method: :patch %>
+<br>
+<%= button_to "Place Order", {action: "update"}, method: :patch, class: "waves-effect waves-light btn" %>
+<% else %>
+  <h4>No products added.</h4>
+<% end %>

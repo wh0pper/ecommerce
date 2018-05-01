@@ -11,4 +11,4 @@ Product.destroy_all
   Product.create!(name: Faker::Commerce.product_name, price: Faker::Commerce.price);
 end
 
-p "Created #{Product.count} products
+p "Created #{Product.count} products"

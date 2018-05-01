@@ -7,8 +7,10 @@
     <tr>
       <th>Name</th>
       <th>Price</th>
-      <th colspan="3"></th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>Add to cart</th>
     </tr>
   </thead>
 
@@ -23,8 +25,8 @@
         <td>
           <%= form_for @line_item do |f| %>
             <%= f.hidden_field :product_id, value: product.id %>
-            <%= f.number_field :quantity %>
-            <%= f.submit '+', class: 'btn-floating btn-large waves-effect waves-light' %>
+            <%= f.number_field :quantity, class: "add-quantity" %>
+            <%= f.submit '+', class: 'btn-floating waves-effect waves-light' %>
           <% end %>
         </td>
 
