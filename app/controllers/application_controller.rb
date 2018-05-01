@@ -7,9 +7,13 @@ class ApplicationController < ActionController::Base
       Order.find(session[:order_id])
     else
       if user_signed_in?
-        Account.find(current_user.id).orders.create
+        order = Account.find(current_user.id).orders.create
+        session[:order_id] = order.id
+        return order
       else
-        Order.create
+        order = Order.create
+        session[:order_id] = order.id
+        return order
       end
     end
   end
