@@ -1,2 +1,11 @@
 <h1>Your account.</h1>
 <%= link_to "Edit your account information", edit_user_registration_path %>
+
+<% if @orders.any? %>
+<h4>Your past orders:</h4>
+<ul>
+  <% @orders.each do |order| %>
+    <li><%= order.id %></li>
+  <% end %>
+</ul>
+<% end %>
