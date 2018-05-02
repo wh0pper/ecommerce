@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
 Order.destroy_all
-LineItem.destroy_all 
+LineItem.destroy_all
 
-20.times do |index|
+100.times do |index|
   Product.create!(name: Faker::Commerce.product_name, price: Faker::Commerce.price);
 end
 
