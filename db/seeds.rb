@@ -10,7 +10,7 @@ Order.destroy_all
 LineItem.destroy_all
 
 100.times do |index|
-  Product.create!(name: Faker::Commerce.product_name, price: Faker::Commerce.price);
+  Product.create!(name: Faker::Commerce.product_name, price: Faker::Commerce.price, image: Faker::LoremPixel.image)
 end
 
 p "Created #{Product.count} products"
