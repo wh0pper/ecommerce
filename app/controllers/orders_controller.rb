@@ -2,11 +2,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, :except => :show
 
   def show
-    if params[:format]
-      @order = Order.find(params[:format])
-    else
-      @order = current_order
-    end
+    # if params[:format]
+    #   @order = Order.find(params[:format])
+    # else
+    #   @order = current_order
+    # end
   end
 
   def update

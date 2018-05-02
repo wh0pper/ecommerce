@@ -1,41 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<%  %>
 <h1>Your cart:</h1>
 
-<table>
-  <% if @order.line_items.any? %>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Total</th>
-      <th>Remove item</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <% @order.line_items.each do |item| %>
-        <div id="<%= item.id %>">
-          <%= render 'line_items/line_item', item: item %>
-        </div>
-      <% end %>
-      <tr>
-        <td></td>
-        <td>Order total:</td>
-        <td><%= @order.total_quantity %> Items</td>
-        <td><%= number_to_currency @order.total_price %></td>
-        <td></td>
-      </tr>
-
-  </tbody>
-</table>
+<% if current_order.line_items.any? %>
+<div id="line-items">
+  <%= render 'line_items/line_items' %>
+</div>
 
 <br>
-  <% if @order.status == "In progress" %>
-    <%= link_to "Place Order", new_charge_path, class: "waves-effect waves-light btn" %>
-  <% end %>
+
+<%= link_to "Place Order", new_charge_path, class: "waves-effect waves-light btn" %>
+
 <% else %>
   <h4>No products added.</h4>
 <% end %>

@@ -1,0 +1,39 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Remove item</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_order.line_items.each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= number_to_currency item.product.price %></td>
+        <td>
+          <span id="<%= item.id %>"><%= item.quantity %></span>
+          <div id="<%= item.id %>" class="edit-quantity">
+            <%= form_for item, remote: true do |f| %>
+            <%= f.number_field :quantity %>
+            <%= f.submit "Change" %>
+            <% end %>
+          </div>
+        </td>
+        <td><%= number_to_currency item.product.price * item.quantity %></td>
+        <td><%= link_to 'Remove', item, method: :delete, remote: true %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td></td>
+      <td>Order total:</td>
+      <td><%= current_order.total_quantity %> Items</td>
+      <td><%= number_to_currency current_order.total_price %></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
