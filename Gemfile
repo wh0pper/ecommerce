@@ -10,6 +10,7 @@ gem 'devise'
 gem 'materialize-sass', '~> 1.0.0.beta'
 # gem 'paperclip', '~> 6.0.0'
 gem 'factory_bot_rails'
+gem 'stripe'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -52,6 +53,7 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'dotenv-rails'
 end
 
 group :development do

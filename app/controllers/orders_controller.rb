@@ -14,6 +14,6 @@ class OrdersController < ApplicationController
     flash[:notice] = "Order successfully placed."
     new_order = Account.where(user_id: current_user.id).first.orders.create
     session[:order_id] = new_order.id
-    redirect_to products_path
+    redirect_to new_charge_path
   end
 end

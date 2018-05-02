@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root to: "products#index"
   resource :order, only: [:show, :update]
   resource :account, only: [:show]
+  resources :charges
 end
