@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/testing', to: 'orders#update'
   devise_for :users
   resources :products
   resources :line_items

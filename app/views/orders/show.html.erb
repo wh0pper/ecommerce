@@ -17,22 +17,9 @@
 
   <tbody>
       <% @order.line_items.each do |item| %>
-        <tr>
-          <td><%= item.product.name %></td>
-          <td><%= number_to_currency item.product.price %></td>
-          <td>
-            <span id="<%= item.id %>"><%= item.quantity %></span>
-            <div id="<%= item.id %>" class="edit-quantity">
-              <%= form_for item, remote: true do |f| %>
-                <%= f.number_field :quantity %>
-                <%= f.submit "Change" %>
-              <% end %>
-            </div>
-          </td>
-          <td><%= number_to_currency item.product.price * item.quantity %></td>
-          <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-        </tr>
+        <div id="<%= item.id %>">
+          <%= render 'line_items/line_item', item: item %>
+        </div>
       <% end %>
       <tr>
         <td></td>
@@ -47,7 +34,7 @@
 
 <br>
   <% if @order.status == "In progress" %>
-    <%= button_to "Place Order", {action: "update"}, method: :patch, class: "waves-effect waves-light btn" %>
+    <%= link_to "Place Order", new_charge_path, class: "waves-effect waves-light btn" %>
   <% end %>
 <% else %>
   <h4>No products added.</h4>

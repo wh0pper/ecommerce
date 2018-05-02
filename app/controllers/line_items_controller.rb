@@ -29,9 +29,13 @@ class LineItemsController < ApplicationController
   def destroy
     @order = current_order
     @item = @order.line_items.find(params[:id])
+    @item_id = @item.id 
     @item.destroy
     @order.save
-    redirect_to order_path
+    respond_to do |format|
+      format.html { redirect_to order_path }
+      format.js
+    end
   end
 
   private

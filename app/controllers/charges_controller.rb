@@ -18,10 +18,10 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
+    redirect_to testing_path
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
   end
-
-  redirect_to order_path(current_order), method: 'patch'
 end

@@ -10,10 +10,11 @@ class OrdersController < ApplicationController
   end
 
   def update
+    binding.pry
     current_order.update(status: "Placed", placed_on: Date.today)
     flash[:notice] = "Order successfully placed."
     new_order = Account.where(user_id: current_user.id).first.orders.create
     session[:order_id] = new_order.id
-    redirect_to new_charge_path
+    redirect_to '/'
   end
 end
