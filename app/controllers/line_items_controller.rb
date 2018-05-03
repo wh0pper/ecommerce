@@ -23,13 +23,14 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to order_path(current_order) }
       format.js
+      format.json { render json: @line_item }
     end
   end
 
   def destroy
     @order = current_order
     @item = @order.line_items.find(params[:id])
-    @item_id = @item.id 
+    @item_id = @item.id
     @item.destroy
     @order.save
     respond_to do |format|

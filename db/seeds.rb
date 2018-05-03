@@ -9,8 +9,18 @@ Product.destroy_all
 Order.destroy_all
 LineItem.destroy_all
 
+response = RestClient::Request.execute(
+method: :get,
+url: 'https://api.nytimes.com/svc/books/v3/lists/combined-print-and-e-book-fiction.json',
+headers: {api_key: ENV['NYT_API_KEY']}
+)
+
+JSON.parse(response)["results"]["books"].each do |book|
+  Product.create!(name: book["title"], price: Faker::Commerce.price, image: book["book_image"], category: "books")
+end
+
 100.times do |index|
-  Product.create!(name: Faker::Commerce.product_name, price: Faker::Commerce.price, image: Faker::LoremPixel.image)
+  Product.create!(name: Faker::Commerce.product_name, price: Faker::Commerce.price, image: Faker::LoremPixel.image, category: "other")
 end
 
 p "Created #{Product.count} products"

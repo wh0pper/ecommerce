@@ -17,7 +17,7 @@
         <td>
           <span id="<%= item.id %>"><%= item.quantity %></span>
           <div id="<%= item.id %>" class="edit-quantity">
-            <%= form_for item, remote: true do |f| %>
+            <%= form_for item, remote: false do |f| %>
             <%= f.number_field :quantity %>
             <%= f.submit "Change" %>
             <% end %>

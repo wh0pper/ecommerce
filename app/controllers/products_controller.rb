@@ -4,7 +4,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.paginate(:page => params[:page], :per_page => 10)
+    if params[:category] == 'books'
+      @products = Product.books.paginate(:page => params[:page], :per_page => 10)
+    elsif params[:category] == 'other'
+      @products = Product.other.paginate(:page => params[:page], :per_page => 10)
+    else
+      @products = Product.paginate(:page => params[:page], :per_page => 10)
+    end
     @line_item = current_order.line_items.new
   end
 

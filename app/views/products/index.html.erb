@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
+<p>Filter by category:</p>
+<%= link_to "Books", {:controller => 'products', :action => 'index', :category => 'books'} %> | 
+<%= link_to "Other", {:controller => 'products', :action => 'index', :category => 'other'} %>
 
 <table>
   <thead>
     <% if current_user && current_user.admin? %>
     <div class="collection">
       <%= link_to 'Add a new product', new_product_path, class: "collection-item" %>
-
     </div>
     <% end %>
     <tr>
